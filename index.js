@@ -1,8 +1,11 @@
 var express = require ('express'),
     app = express(),
-    todoRoutes = require('./routes/todos');
+    todoRoutes = require('./routes/todos'),
+    bodyParser = require('body-parser');
 const port = 3000;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api/todos', todoRoutes);
 
 app.get('/', function(req, res){
